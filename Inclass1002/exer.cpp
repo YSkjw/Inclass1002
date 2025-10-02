@@ -6,10 +6,27 @@
 // TODO: Define the OOPCourse::Math namespace structure and
 //       the internal anonymous namespace here.
 
+namespace {
+    void log_calculation(int result) {
+        std::cout << "LOG: Calculation performed, result is [" << result << "]" << std::endl;
+    }
+}
+
+namespace OOPCourse::Math {
+    int add_and_log(int a, int b) {
+        int sum = a + b;
+        log_calculation(sum);
+        return sum;
+    }
+}
+
+
+
 // =========================================================
 
 
 // Main program
+
 int main()
 {
     // --- Exercise 1: String reversal and largest value ---
@@ -47,17 +64,16 @@ int main()
 
     std::cout << "\n";
 
-
     // --- Exercise 2: Namespaces ---
     std::cout << "--- Exercise 2: Namespaces ---\n";
-
+   
     // TODO: Use the 'using' declaration here to bring ONLY the public
     //       'add_and_log' function into scope.
-
+    using OOPCourse::Math::add_and_log;
 
 
     // TODO: Call 'add_and_log(15, 27)' and print the result.
-
+    std::cout << add_and_log(15, 27);
 
     return 0;
 }
